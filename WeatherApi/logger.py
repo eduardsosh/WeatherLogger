@@ -1,13 +1,12 @@
-# /opt/myapp/logger_setup.py
 import logging
 import sys
 from logging.handlers import RotatingFileHandler
 import pathlib
 
-LOG_PATH = "/var/log/myapp/job.log"
+LOG_PATH = "/var/log/weather_app/job.log"
 pathlib.Path(LOG_PATH).parent.mkdir(parents=True, exist_ok=True)
 
-def get_logger(name="myapp"):
+def get_logger(name="weather_app"):
     logger = logging.getLogger(name)
 
     if logger.handlers:  # avoid adding handlers twice
