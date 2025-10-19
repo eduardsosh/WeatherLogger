@@ -5,12 +5,46 @@ CREATE TABLE IF NOT EXISTS forecast (
     issued_at DATETIME,
     city TEXT,
     forecast_datetime DATETIME,
-    forecast_data TEXT
+    temp REAL,
+    feels_like REAL,
+    temp_min REAL,
+    temp_max REAL,
+    pressure INTEGER,
+    sea_level INTEGER,
+    grnd_level INTEGER,
+    humidity INTEGER,
+    temp_kf REAL,
+    weather_main TEXT,
+    clouds_all INTEGER,
+    wind_speed REAL,
+    wind_deg INTEGER,
+    wind_gust REAL,
+    visibility INTEGER,
+    pop REAL
 )
 """
 
 INSERT_FORECAST = \
 """
-INSERT INTO forecast (issued_at, city, forecast_datetime, forecast_data)
-VALUES (?, ?, ?, ?)
+INSERT INTO forecast (
+    issued_at,
+    city,
+    forecast_datetime,
+    temp,
+    feels_like,
+    temp_min,
+    temp_max,
+    pressure,
+    sea_level,
+    grnd_level,
+    humidity,
+    temp_kf,
+    weather_main,
+    clouds_all,
+    wind_speed,
+    wind_deg,
+    wind_gust,
+    visibility,
+    pop
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 """

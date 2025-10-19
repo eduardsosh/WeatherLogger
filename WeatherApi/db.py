@@ -35,13 +35,27 @@ def save_forecast(forecast_data_dict: dict):
     count = 0
     for entry in forecast_data_dict.get('list', []):
         forecast_datetime = entry.get('dt_txt')
-        forecast_data_json = json.dumps(forecast_data_dict)
         
         cursor.execute(INSERT_FORECAST, (
             issued_at,
             city,
             forecast_datetime,
-            forecast_data_json
+            entry.get('main', {}).get('temp'),
+            entry.get('main', {}).get('feels_like'),
+            entry.get('main', {}).get('temp_min'),
+            entry.get('main', {}).get('temp_max'),
+            entry.get('main', {}).get('pressure'),
+            entry.get('main', {}).get('sea_level'),
+            entry.get('main', {}).get('grnd_level'),
+            entry.get('main', {}).get('humidity'),
+            entry.get('main', {}).get('temp_kf'),
+            entry.get('weather', [{}])[0].get('main'),
+            entry.get('clouds', {}).get('all'),
+            entry.get('wind', {}).get('speed'),
+            entry.get('wind', {}).get('deg'),
+            entry.get('wind', {}).get('gust'),
+            entry.get('visibility'),
+            entry.get('pop')
         ))
         count += 1
     
