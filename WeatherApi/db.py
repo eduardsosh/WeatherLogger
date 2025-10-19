@@ -3,9 +3,11 @@ import json
 import datetime as dt
 from db_scripts import CREATE_FORECAST_TABLE, INSERT_FORECAST
 from logger import get_logger
+import os
 
 logger = get_logger(__name__)
-DB_NAME = 'weather_data.db'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_NAME = os.path.join(BASE_DIR, "weather.db")
 
 def _init_db():
     """Initialize the SQLite database and create necessary tables.
